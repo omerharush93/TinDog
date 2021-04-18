@@ -15,13 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tindog.R;
 import com.example.tindog.models.Dog;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.ByteArrayOutputStream;
-import java.util.Date;
+import com.example.tindog.models.ModelFirebase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -134,58 +128,32 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter dog image", Toast.LENGTH_SHORT).show();
             return;
         }
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailInput.getText().toString(), passwordInput.getText().toString()).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(getApplicationContext(), "User Registered...", Toast.LENGTH_SHORT).show();
-                Dog dog = new Dog(FirebaseAuth.getInstance().getCurrentUser().getUid(),
-                        dogName.getText().toString(),
-                        ownerName.getText().toString(),
-                        ownerPhone.getText().toString(),
-                        location.getText().toString(),
-                        breedSpinner.getSelectedItem().toString(),
-                        Integer.parseInt(ageSpinner.getSelectedItem().toString()),
-                        Integer.parseInt(weightSpinner.getSelectedItem().toString()),
-                        "",
-                        description.getText().toString()
-                );
-                uploadImage(dog);
 
-            } else
-                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-        });
+        Dog dog = new Dog("",
+                dogName.getText().toString(),
+                ownerName.getText().toString(),
+                ownerPhone.getText().toString(),
+                location.getText().toString(),
+                breedSpinner.getSelectedItem().toString(),
+                Integer.parseInt(ageSpinner.getSelectedItem().toString()),
+                Integer.parseInt(weightSpinner.getSelectedItem().toString()),
+                "",
+                description.getText().toString()
+        );
 
-    }
-
-    private void uploadImage(Dog dog) {
-        Date date = new Date();
-        String imageName = dog.getId() + date.getTime();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        dogImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images").child(imageName);
-        imageRef.putBytes(baos.toByteArray()).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(getApplicationContext(), "Image uploaded...", Toast.LENGTH_SHORT).show();
-                imageRef.getDownloadUrl().addOnCompleteListener(uri -> {
-                    if (uri.isSuccessful()) {
-                        dog.setDogImgUrl(uri.getResult().toString());
-                        uploadDogToDB(dog);
-                    } else
-                        Toast.makeText(getApplicationContext(), uri.getException().getMessage(), Toast.LENGTH_SHORT).show();
+        ModelFirebase.createDogProfile(emailInput, passwordInput, dog, listener -> {
+            if (listener != null) {
+                ModelFirebase.uploadImage(listener, dogImageBitmap, image -> {
+                    if (image != null) {
+                        ModelFirebase.uploadDogToDB(dog, res -> {
+                            if (res) {
+                                finishAffinity();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        });
+                    }
                 });
-            } else {
-                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
-    }
-
-    private void uploadDogToDB(Dog dog) {
-        FirebaseFirestore.getInstance().collection("users").document(dog.getId()).set(dog).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(getApplicationContext(), "User created successfully", Toast.LENGTH_SHORT).show();
-                finishAffinity();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            } else
-                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 }
