@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".views.RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/register_dog_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Dog's Name" />
+
+    <EditText
+        android:id="@+id/register_owner_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Owner's Name" />
+
+    <EditText
+        android:id="@+id/register_phone"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="phone number"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/register_location"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Location" />
+
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dog's breed" />
+
+        <Spinner
+            android:id="@+id/breed_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dog's age" />
+
+        <Spinner
+            android:id="@+id/age_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dog's weight (kg)" />
+
+        <Spinner
+            android:id="@+id/weight_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/register_dog_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="chooseImageFromGallery"
+        android:src="@drawable/ic_baseline_add_a_photo_24" />
+
+    <EditText
+        android:id="@+id/register_dog_description"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:hint="describe your dog" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="createDogProfile"
+        android:text="Create Profile" />
+
+
+</LinearLayout>
