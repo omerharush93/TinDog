@@ -68,4 +68,8 @@ public class ModelFirebase {
             }
         });
     }
+
+    public static void signOut() {
+        auth.signOut();
+    }
 }

@@ -17,13 +17,14 @@
         android:id="@+id/login_activity_password_edit_text"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="Password" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="login"/>
+        android:onClick="login"
+        android:text="Login" />
 
     <TextView
         android:layout_width="wrap_content"
