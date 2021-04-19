@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tindog.R;
 import com.example.tindog.interfaces.OnItemClickListener;
 import com.example.tindog.models.Dog;
@@ -44,7 +45,7 @@ public class FeedsRecyclerAdapter extends RecyclerView.Adapter<FeedsRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull FeedHolder holder, int position) {
         Dog dog = dogs.get(position);
-        Glide.with(holder.itemView.getContext()).load(dog.getDogImgUrl()).into(holder.dogImg);
+        Glide.with(holder.itemView.getContext()).load(dog.getDogImgUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.dogImg);
         holder.dogDetails.setText(dog.getName() + ", " + dog.getAge() + " years old, " + dog.getBreed());
     }
 
