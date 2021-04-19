@@ -62,7 +62,7 @@ public class ProfileFragment extends Fragment {
         ModelFirebase.getDogFromDB(FirebaseAuth.getInstance().getCurrentUser().getUid(), listener -> {
             if (listener != null) {
                 dog = listener;
-                Glide.with(getContext()).load(listener.getDogImgUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(dogImg);
+                Glide.with(getContext()).asBitmap().load(listener.getDogImgUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(dogImg);
                 title.setText(dog.getName() + ", " + dog.getAge() + " years old, " + dog.getBreed());
                 owner.setText("Owner: " + dog.getOwnerName());
                 phone.setText("Phone: " + dog.getOwnersPhone());
