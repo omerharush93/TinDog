@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TinDog">
+        <activity android:name=".views.OtherProfileActivity" />
+        <activity android:name=".views.EditProfileActivity" />
         <activity android:name=".views.RegisterActivity" />
         <activity android:name=".views.LoginActivity" />
         <activity android:name=".views.MainActivity">

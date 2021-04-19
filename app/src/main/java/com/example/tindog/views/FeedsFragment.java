@@ -1,20 +1,21 @@
 package com.example.tindog.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tindog.R;
 import com.example.tindog.adapters.FeedsRecyclerAdapter;
 import com.example.tindog.models.Dog;
-import com.example.tindog.models.ModelFirebase;
+import com.example.tindog.viewmodels.RoomViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class FeedsFragment extends Fragment {
     private RecyclerView feedsRecycler;
     private FeedsRecyclerAdapter adapter;
     private List<Dog> dogs = new ArrayList<>();
-
+    private RoomViewModel roomViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,13 +40,14 @@ public class FeedsFragment extends Fragment {
         adapter = new FeedsRecyclerAdapter();
         feedsRecycler.setAdapter(adapter);
         adapter.setOnItemClickListener((o, position) -> {
-            Toast.makeText(getContext(), ((Dog) o).getAge() + "", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getContext(), OtherProfileActivity.class);
+            intent.putExtra("dog", (Dog) o);
+            startActivity(intent);
         });
-        ModelFirebase.getAllDogsFromDB(listener -> {
-            if (listener != null) {
-                dogs = listener;
-                adapter.setDogs(dogs);
-            }
+        roomViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(RoomViewModel.class);
+        roomViewModel.getAllDogs().observe(getViewLifecycleOwner(), obs -> {
+            dogs = obs;
+            adapter.setDogs(dogs);
         });
     }
 }

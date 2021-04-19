@@ -70,7 +70,7 @@ public class ModelFirebase {
     }
 
     public static void getAllDogsFromDB(Model.Listener<List<Dog>> listener) {
-        db.collection("users").get().addOnCompleteListener(task -> {
+        db.collection("users").whereNotEqualTo("id", auth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 listener.onComplete(task.getResult().toObjects(Dog.class));
             } else {
