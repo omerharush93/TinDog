@@ -8,9 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.tindog.R;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.tindog.models.ModelFirebase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,13 +31,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(emailInput.getText().toString(), passwordInput.getText().toString()).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
+        ModelFirebase.signIn(emailInput, passwordInput, listener -> {
+            if (listener) {
                 Toast.makeText(getApplicationContext(), "Welcome :)", Toast.LENGTH_SHORT).show();
                 finishAffinity();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            } else
-                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

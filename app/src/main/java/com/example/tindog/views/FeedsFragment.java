@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tindog.R;
 import com.example.tindog.adapters.FeedsRecyclerAdapter;
 import com.example.tindog.models.Dog;
+import com.example.tindog.models.ModelFirebase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FeedsFragment extends Fragment {
 
     private RecyclerView feedsRecycler;
     private FeedsRecyclerAdapter adapter;
+    private List<Dog> dogs = new ArrayList<>();
 
 
     @Override
@@ -38,13 +41,11 @@ public class FeedsFragment extends Fragment {
         adapter.setOnItemClickListener((o, position) -> {
             Toast.makeText(getContext(), ((Dog) o).getAge() + "", Toast.LENGTH_SHORT).show();
         });
-        ArrayList<Dog> dogs = new ArrayList<>();
-        dogs.add(new Dog());
-        dogs.add(new Dog());
-        dogs.add(new Dog());
-        dogs.add(new Dog());
-        dogs.add(new Dog());
-        adapter.setDogs(dogs);
-
+        ModelFirebase.getAllDogsFromDB(listener -> {
+            if (listener != null) {
+                dogs = listener;
+                adapter.setDogs(dogs);
+            }
+        });
     }
 }
