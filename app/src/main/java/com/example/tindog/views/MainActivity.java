@@ -54,19 +54,4 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.signout_menu_btn) {
-            ModelFirebase.signOut();
-            recreate();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

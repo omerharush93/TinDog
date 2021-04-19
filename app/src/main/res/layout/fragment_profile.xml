@@ -75,11 +75,20 @@
         app:layout_constraintStart_toStartOf="@+id/profileWeight"
         app:layout_constraintTop_toBottomOf="@+id/profileWeight" />
 
-    <Button
+    <ImageView
         android:id="@+id/profileEditBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:layout_constraintBottom_toBottomOf="@+id/profileTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileTitle" />
+
+    <Button
+        android:id="@+id/profileLogoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
+        android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
