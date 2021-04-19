@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "345291557908-4sj65r0qjv6dj265vplvcpt8hktq96ro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tindog",
+            "certificate_hash": "47d7c9fae50f40f21a1f380dd060c0727f9d544b"
+          }
+        },
+        {
           "client_id": "345291557908-97sleeatf345mgge5qbv64gc366daauu.apps.googleusercontent.com",
           "client_type": 3
         }
