@@ -29,15 +29,51 @@
         tools:text="Lola, 3 years old" />
 
     <TextView
-        android:id="@+id/profileDescription"
+        android:id="@+id/profileOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/profileTitle"
+        app:layout_constraintTop_toBottomOf="@+id/profileTitle"
+        tools:text="Owner: David Perets" />
+
+    <TextView
+        android:id="@+id/profilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/profileTitle"
+        app:layout_constraintTop_toBottomOf="@+id/profileOwner"
+        tools:text="Phone: 0545455454" />
+
+    <TextView
+        android:id="@+id/profileLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/profileOwner"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhone"
+        tools:text="Location: israel" />
+
+    <TextView
+        android:id="@+id/profileWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/profileOwner"
+        app:layout_constraintTop_toBottomOf="@+id/profileLocation"
+        tools:text="Weight: 4 kg" />
+
+    <TextView
+        android:id="@+id/profileDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Lola is a nice dog..."
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileTitle" />
+        app:layout_constraintStart_toStartOf="@+id/profileWeight"
+        app:layout_constraintTop_toBottomOf="@+id/profileWeight" />
 
     <Button
         android:id="@+id/profileEditBtn"

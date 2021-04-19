@@ -59,6 +59,19 @@ public class ModelFirebase {
         });
     }
 
+    public static void updateDogInDB(Dog dog, Model.Listener<Boolean> listener) {
+
+        db.collection("users").document(dog.getId()).set(dog).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(App.getContext(), "User updated successfully", Toast.LENGTH_SHORT).show();
+                listener.onComplete(true);
+            } else {
+                Toast.makeText(App.getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                listener.onComplete(false);
+            }
+        });
+    }
+
     public static void getDogFromDB(String id, Model.Listener<Dog> listener) {
         db.collection("users").document(id).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

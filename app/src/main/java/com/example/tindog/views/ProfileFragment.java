@@ -1,5 +1,6 @@
 package com.example.tindog.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,10 @@ public class ProfileFragment extends Fragment {
 
     private ImageView dogImg;
     private TextView title;
+    private TextView owner;
+    private TextView phone;
+    private TextView location;
+    private TextView weight;
     private TextView description;
     private Button editBtn;
     private Dog dog;
@@ -37,13 +42,33 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         dogImg = view.findViewById(R.id.profileImg);
         title = view.findViewById(R.id.profileTitle);
+        owner = view.findViewById(R.id.profileOwner);
+        phone = view.findViewById(R.id.profilePhone);
+        location = view.findViewById(R.id.profileLocation);
+        weight = view.findViewById(R.id.profileWeight);
         description = view.findViewById(R.id.profileDescription);
         editBtn = view.findViewById(R.id.profileEditBtn);
+        editBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), EditProfileActivity.class);
+            intent.putExtra("dog", dog);
+            startActivity(intent);
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         ModelFirebase.getDogFromDB(FirebaseAuth.getInstance().getCurrentUser().getUid(), listener -> {
             if (listener != null) {
-                title.setText(listener.getName() + ", " + listener.getAge() + " years old");
-                description.setText(listener.getDescription());
+                dog = listener;
                 Glide.with(getContext()).load(listener.getDogImgUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(dogImg);
+                title.setText(dog.getName() + ", " + dog.getAge() + " years old, " + dog.getBreed());
+                owner.setText("Owner: " + dog.getOwnerName());
+                phone.setText("Phone: " + dog.getOwnersPhone());
+                location.setText("Location: " + dog.getLocation());
+                weight.setText("Weight: " + dog.getWeight());
+                description.setText(listener.getDescription());
             }
         });
     }

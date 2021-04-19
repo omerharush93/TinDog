@@ -6,4 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".views.EditProfileActivity">
 
+    <ImageView
+        android:id="@+id/editProfileImg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_baseline_person_24" />
+
+    <EditText
+        android:id="@+id/editProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileImg"
+        tools:text="Lola" />
+
+    <LinearLayout
+        android:id="@+id/editProfileAgeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/editProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileName">
+
+        <Spinner
+            android:id="@+id/editProfileAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            tools:text="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="years old"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+    <Spinner
+        android:id="@+id/editProfileBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editProfileAgeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileAgeLayout"
+        tools:text="Husky" />
+
+    <EditText
+        android:id="@+id/editProfileOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editProfileBreed"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileBreed"
+        tools:text="David Perets" />
+
+    <EditText
+        android:id="@+id/editProfilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editProfileOwner"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileOwner"
+        tools:text="0545455454" />
+
+    <EditText
+        android:id="@+id/editProfileLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editProfilePhone"
+        app:layout_constraintTop_toBottomOf="@+id/editProfilePhone"
+        tools:text="israel" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/editProfileLocation"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileLocation">
+
+        <Spinner
+            android:id="@+id/editProfileWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            tools:text="4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kg"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/editProfileDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lola is a nice dog..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

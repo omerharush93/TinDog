@@ -26,17 +26,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otherProfileImg"
-        tools:text="Lola, 3 years old" />
+        tools:text="Lola, 3 years old, husky" />
+
+    <TextView
+        android:id="@+id/otherProfileOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/otherProfileTitle"
+        app:layout_constraintTop_toBottomOf="@+id/otherProfileTitle"
+        tools:text="Owner: David Perets" />
+
+    <TextView
+        android:id="@+id/otherProfilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/otherProfileTitle"
+        app:layout_constraintTop_toBottomOf="@+id/otherProfileOwner"
+        tools:text="Phone: 0545455454" />
+
+    <TextView
+        android:id="@+id/otherProfileLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/otherProfileOwner"
+        app:layout_constraintTop_toBottomOf="@+id/otherProfilePhone"
+        tools:text="Location: israel" />
+
+    <TextView
+        android:id="@+id/otherProfileWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/otherProfileOwner"
+        app:layout_constraintTop_toBottomOf="@+id/otherProfileLocation"
+        tools:text="Weight: 4 kg" />
 
     <TextView
         android:id="@+id/otherProfileDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Lola is a nice dog..."
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherProfileTitle" />
+        app:layout_constraintStart_toStartOf="@+id/otherProfileWeight"
+        app:layout_constraintTop_toBottomOf="@+id/otherProfileWeight" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "345291557908",
+    "project_id": "tindog-1993",
+    "storage_bucket": "tindog-1993.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345291557908:android:6c6817293083e797aeab01",
+        "android_client_info": {
+          "package_name": "com.example.tindog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345291557908-97sleeatf345mgge5qbv64gc366daauu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhOyqQa5B3JaZM8-U7yZ-n3KONoSYfutU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345291557908-97sleeatf345mgge5qbv64gc366daauu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
