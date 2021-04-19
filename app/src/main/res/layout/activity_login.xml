@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".views.LoginActivity">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/dog_img" />
+
     <EditText
         android:id="@+id/login_activity_email_edit_text"
         android:layout_width="300dp"

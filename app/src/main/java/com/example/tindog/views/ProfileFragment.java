@@ -29,7 +29,8 @@ public class ProfileFragment extends Fragment {
     private TextView location;
     private TextView weight;
     private TextView description;
-    private Button editBtn;
+    private ImageView editBtn;
+    private Button logoutBtn;
     private Dog dog;
 
     @Override
@@ -48,10 +49,16 @@ public class ProfileFragment extends Fragment {
         weight = view.findViewById(R.id.profileWeight);
         description = view.findViewById(R.id.profileDescription);
         editBtn = view.findViewById(R.id.profileEditBtn);
+        logoutBtn = view.findViewById(R.id.profileLogoutBtn);
         editBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), EditProfileActivity.class);
             intent.putExtra("dog", dog);
             startActivity(intent);
+        });
+
+        logoutBtn.setOnClickListener(v->{
+            ModelFirebase.signOut();
+            getActivity().recreate();
         });
 
     }
