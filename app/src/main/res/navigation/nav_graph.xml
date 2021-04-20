@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/feedsFragment"
-        android:name="com.example.tindog.views.FeedsFragment"
+        android:name="com.example.tindog.fragments.FeedsFragment"
         android:label="fragment_feeds"
         tools:layout="@layout/fragment_feeds">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.tindog.views.LoginFragment"
+        android:name="com.example.tindog.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.tindog.views.RegisterFragment"
+        android:name="com.example.tindog.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment2"
-        android:name="com.example.tindog.views.ProfileFragment"
+        android:name="com.example.tindog.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/otherProfileFragment"
-        android:name="com.example.tindog.views.OtherProfileFragment"
+        android:name="com.example.tindog.fragments.OtherProfileFragment"
         android:label="fragment_other_profile"
         tools:layout="@layout/fragment_other_profile">
         <argument
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.tindog.views.EditProfileFragment"
+        android:name="com.example.tindog.fragments.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile">
         <argument

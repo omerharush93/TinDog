@@ -1,6 +1,4 @@
-package com.example.tindog.interfaces;
-
-import android.view.View;
+package com.example.tindog.models;
 
 public interface OnItemClickListener {
     void onItemClick(Object o, int position);

@@ -1,12 +1,10 @@
-package com.example.tindog.room;
+package com.example.tindog.models;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
-import com.example.tindog.models.Dog;
 
 @Database(entities = {Dog.class}, version = 1)
 public abstract class DogDatabase extends RoomDatabase {

@@ -1,4 +1,4 @@
-package com.example.tindog.views;
+package com.example.tindog.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

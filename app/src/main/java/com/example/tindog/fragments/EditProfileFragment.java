@@ -1,4 +1,4 @@
-package com.example.tindog.views;
+package com.example.tindog.fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,7 +25,7 @@ import com.example.tindog.models.Dog;
 import com.example.tindog.models.ModelFirebase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static com.example.tindog.utils.App.uriToBitmap;
+import static com.example.tindog.App.uriToBitmap;
 
 public class EditProfileFragment extends Fragment {
     private Dog dog;
