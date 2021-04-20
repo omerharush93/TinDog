@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +14,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tindog.R;
-import com.example.tindog.models.FeedsRecyclerAdapter;
 import com.example.tindog.models.Dog;
+import com.example.tindog.models.FeedsRecyclerAdapter;
 import com.example.tindog.models.ModelFirebase;
 import com.example.tindog.models.RoomViewModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +29,8 @@ public class FeedsFragment extends Fragment {
     private FeedsRecyclerAdapter adapter;
     private List<Dog> dogs = new ArrayList<>();
     private RoomViewModel roomViewModel;
+    private android.widget.SearchView searchView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +63,27 @@ public class FeedsFragment extends Fragment {
         roomViewModel.getAllDogs().observe(getViewLifecycleOwner(), obs -> {
             dogs = obs;
             adapter.setDogs(dogs);
+        });
+
+        searchView = view.findViewById(R.id.find_users_search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                List<Dog> filteredUsers = new ArrayList<>();
+                if (s.isEmpty())
+                    filteredUsers.addAll(dogs);
+                else
+                    for (Dog user : dogs)
+                        if (user.getBreed().toUpperCase().contains(s.toUpperCase()))
+                            filteredUsers.add(user);
+                adapter.setDogs(filteredUsers);
+                return false;
+            }
         });
     }
 }
