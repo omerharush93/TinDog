@@ -39,6 +39,7 @@ public class LoginFragment extends Fragment {
 
         loginBtn.setOnClickListener(v -> login());
         registerBtn.setOnClickListener(v -> toRegisterPage());
+        getActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
     }
 
     public void login() {
@@ -46,7 +47,7 @@ public class LoginFragment extends Fragment {
             if (listener) {
                 Toast.makeText(getContext(), "Welcome :)", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginFragmentToFeedsFragment());
-                getActivity().recreate();
+                getActivity().findViewById(R.id.bottom_nav).setVisibility(View.VISIBLE);
             }
         });
     }
