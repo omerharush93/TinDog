@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".views.LoginActivity">
+    tools:context=".views.LoginFragment">
 
     <ImageView
         android:layout_width="100dp"
@@ -26,9 +26,9 @@
         android:inputType="textPassword" />
 
     <Button
+        android:id="@+id/login_fragment_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:onClick="login"
         android:text="Login" />
 
     <TextView
@@ -39,9 +39,9 @@
         android:textSize="20sp" />
 
     <Button
+        android:id="@+id/login_fragment_register_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:onClick="toRegisterPage"
         android:text="register" />
 
 </LinearLayout>

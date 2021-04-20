@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.tindog.R;
 import com.example.tindog.models.Dog;
@@ -21,7 +26,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.tindog.utils.App.uriToBitmap;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterFragment extends Fragment {
+
     private EditText emailInput;
     private EditText passwordInput;
     private EditText dogName;
@@ -34,38 +40,45 @@ public class RegisterActivity extends AppCompatActivity {
     private CircleImageView dogImage;
     private Bitmap dogImageBitmap;
     private EditText description;
+    private Button registerBtn;
     private final int REQUEST_CODE = 1;
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_register, container, false);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        emailInput = findViewById(R.id.register_email);
-        passwordInput = findViewById(R.id.register_password);
-        dogName = findViewById(R.id.register_dog_name);
-        ownerName = findViewById(R.id.register_owner_name);
-        ownerPhone = findViewById(R.id.register_phone);
-        location = findViewById(R.id.register_location);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        emailInput = view.findViewById(R.id.register_email);
+        passwordInput = view.findViewById(R.id.register_password);
+        dogName = view.findViewById(R.id.register_dog_name);
+        ownerName = view.findViewById(R.id.register_owner_name);
+        ownerPhone = view.findViewById(R.id.register_phone);
+        location = view.findViewById(R.id.register_location);
         breedSpinnerInit();
         ageSpinnerInit();
         weightSpinnerInit();
-        dogImage = findViewById(R.id.register_dog_image);
-        description = findViewById(R.id.register_dog_description);
+        dogImage = view.findViewById(R.id.register_dog_image);
+        dogImage.setOnClickListener(v -> chooseImageFromGallery());
+        description = view.findViewById(R.id.register_dog_description);
+        registerBtn = view.findViewById(R.id.register_fragment_create_btn);
+        registerBtn.setOnClickListener(v -> createDogProfile());
     }
 
-
     private void breedSpinnerInit() {
-        breedSpinner = findViewById(R.id.breed_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        breedSpinner = getView().findViewById(R.id.breed_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.dogs_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         breedSpinner.setAdapter(adapter);
     }
 
     private void ageSpinnerInit() {
-        ageSpinner = findViewById(R.id.age_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ageSpinner = getView().findViewById(R.id.age_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.dogs_age_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
@@ -74,14 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void weightSpinnerInit() {
 
-        weightSpinner = findViewById(R.id.weight_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        weightSpinner = getView().findViewById(R.id.weight_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.dogs_weight_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         weightSpinner.setAdapter(adapter);
     }
 
-    public void chooseImageFromGallery(View view) {
+    public void chooseImageFromGallery() {
 
         try {
             Intent openGalleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -89,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             startActivityForResult(openGalleryIntent, REQUEST_CODE);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Edit profile Page: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Edit profile Page: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -103,29 +116,29 @@ public class RegisterActivity extends AppCompatActivity {
                 dogImageBitmap = uriToBitmap(data.getData());
             }
         } else {
-            Toast.makeText(getApplicationContext(), "No image was selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "No image was selected", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void createDogProfile(View view) {
+    public void createDogProfile() {
         if (dogName.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter dog name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please enter dog name", Toast.LENGTH_SHORT).show();
             return;
         }
         if (ownerName.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter owner name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please enter owner name", Toast.LENGTH_SHORT).show();
             return;
         }
         if (ownerPhone.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter owner phone", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please enter owner phone", Toast.LENGTH_SHORT).show();
             return;
         }
         if (location.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter location", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please enter location", Toast.LENGTH_SHORT).show();
             return;
         }
         if (dogImageBitmap == null) {
-            Toast.makeText(getApplicationContext(), "Please enter dog image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please enter dog image", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -147,8 +160,8 @@ public class RegisterActivity extends AppCompatActivity {
                     if (image != null) {
                         ModelFirebase.uploadDogToDB(dog, res -> {
                             if (res) {
-                                finishAffinity();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                Navigation.findNavController(getView()).navigate(RegisterFragmentDirections.actionRegisterFragmentToFeedsFragment());
+                                getActivity().recreate();
                             }
                         });
                     }

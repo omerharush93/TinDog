@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".views.RegisterActivity">
+    tools:context=".views.RegisterFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,7 +103,6 @@
         android:id="@+id/register_dog_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="chooseImageFromGallery"
         android:src="@drawable/ic_baseline_add_a_photo_24" />
 
     <EditText
@@ -114,10 +113,9 @@
 
 
     <Button
+        android:id="@+id/register_fragment_create_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="createDogProfile"
         android:text="Create Profile" />
-
 
 </LinearLayout>
