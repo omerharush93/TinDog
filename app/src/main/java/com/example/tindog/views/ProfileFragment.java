@@ -1,6 +1,5 @@
 package com.example.tindog.views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tindog.R;
 import com.example.tindog.models.Dog;
 import com.example.tindog.models.ModelFirebase;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
@@ -29,7 +30,7 @@ public class ProfileFragment extends Fragment {
     private TextView location;
     private TextView weight;
     private TextView description;
-    private ImageView editBtn;
+    private FloatingActionButton editBtn;
     private Button logoutBtn;
     private Dog dog;
 
@@ -50,15 +51,11 @@ public class ProfileFragment extends Fragment {
         description = view.findViewById(R.id.profileDescription);
         editBtn = view.findViewById(R.id.profileEditBtn);
         logoutBtn = view.findViewById(R.id.profileLogoutBtn);
-        editBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), EditProfileActivity.class);
-            intent.putExtra("dog", dog);
-            startActivity(intent);
-        });
-
-        logoutBtn.setOnClickListener(v->{
+        editBtn.setOnClickListener(v -> Navigation.findNavController(view).navigate(ProfileFragmentDirections.actionProfileFragment2ToEditProfileFragment(dog)));
+        logoutBtn.setOnClickListener(v -> {
             ModelFirebase.signOut();
-            getActivity().recreate();
+            Navigation.findNavController(view).navigate(ProfileFragmentDirections.actionProfileFragment2ToLoginFragment());
+            getActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
         });
 
     }
