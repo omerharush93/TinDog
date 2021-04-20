@@ -161,7 +161,7 @@ public class RegisterFragment extends Fragment {
                         ModelFirebase.uploadDogToDB(dog, res -> {
                             if (res) {
                                 Navigation.findNavController(getView()).navigate(RegisterFragmentDirections.actionRegisterFragmentToFeedsFragment());
-                                getActivity().recreate();
+                                getActivity().findViewById(R.id.bottom_nav).setVisibility(View.VISIBLE);
                             }
                         });
                     }
