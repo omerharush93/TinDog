@@ -1,4 +1,4 @@
-package com.example.tindog.utils;
+package com.example.tindog;
 
 import android.app.Application;
 import android.content.Context;

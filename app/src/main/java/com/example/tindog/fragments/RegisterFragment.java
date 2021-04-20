@@ -1,4 +1,4 @@
-package com.example.tindog.views;
+package com.example.tindog.fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,7 +24,7 @@ import com.example.tindog.models.ModelFirebase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.example.tindog.utils.App.uriToBitmap;
+import static com.example.tindog.App.uriToBitmap;
 
 public class RegisterFragment extends Fragment {
 

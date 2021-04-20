@@ -1,4 +1,4 @@
-package com.example.tindog.views;
+package com.example.tindog.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.tindog.R;
-import com.example.tindog.viewmodels.RoomViewModel;
+import com.example.tindog.models.RoomViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

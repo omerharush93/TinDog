@@ -1,4 +1,4 @@
-package com.example.tindog.views;
+package com.example.tindog.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,10 +13,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tindog.R;
-import com.example.tindog.adapters.FeedsRecyclerAdapter;
+import com.example.tindog.models.FeedsRecyclerAdapter;
 import com.example.tindog.models.Dog;
 import com.example.tindog.models.ModelFirebase;
-import com.example.tindog.viewmodels.RoomViewModel;
+import com.example.tindog.models.RoomViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

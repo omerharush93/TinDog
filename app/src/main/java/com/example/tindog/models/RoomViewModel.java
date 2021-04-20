@@ -1,13 +1,9 @@
-package com.example.tindog.viewmodels;
+package com.example.tindog.models;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-
-import com.example.tindog.models.Dog;
-import com.example.tindog.room.DogDao;
-import com.example.tindog.room.DogDatabase;
 
 import java.util.List;
 

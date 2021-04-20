@@ -1,4 +1,4 @@
-package com.example.tindog.room;
+package com.example.tindog.models;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

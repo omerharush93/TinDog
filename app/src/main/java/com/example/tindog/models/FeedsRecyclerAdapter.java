@@ -1,4 +1,4 @@
-package com.example.tindog.adapters;
+package com.example.tindog.models;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tindog.R;
-import com.example.tindog.interfaces.OnItemClickListener;
-import com.example.tindog.models.Dog;
 
 import java.util.ArrayList;
 import java.util.List;

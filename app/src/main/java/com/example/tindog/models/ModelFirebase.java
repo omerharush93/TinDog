@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.tindog.utils.App;
+import com.example.tindog.App;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
