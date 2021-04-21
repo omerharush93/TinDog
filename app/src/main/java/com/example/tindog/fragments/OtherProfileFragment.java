@@ -21,6 +21,10 @@ public class OtherProfileFragment extends Fragment {
     private Dog dog;
     private ImageView profileImg;
     private TextView profileTitle;
+    private TextView owner;
+    private TextView phone;
+    private TextView location;
+    private TextView weight;
     private TextView profileDescription;
 
     @Override
@@ -35,10 +39,18 @@ public class OtherProfileFragment extends Fragment {
         dog = OtherProfileFragmentArgs.fromBundle(getArguments()).getDog();
         profileImg = view.findViewById(R.id.otherProfileImg);
         profileTitle = view.findViewById(R.id.otherProfileTitle);
+        owner = view.findViewById(R.id.otherProfileOwner);
+        phone = view.findViewById(R.id.otherProfilePhone);
+        location = view.findViewById(R.id.otherProfileLocation);
+        weight = view.findViewById(R.id.otherProfileWeight);
         profileDescription = view.findViewById(R.id.otherProfileDescription);
 
         Glide.with(this).load(dog.getDogImgUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(profileImg);
         profileTitle.setText(dog.getName() + ", " + dog.getAge() + " years old, " + dog.getBreed());
+        owner.setText("Owner: " + dog.getOwnerName());
+        phone.setText("Phone: " + dog.getOwnersPhone());
+        location.setText("Location: " + dog.getLocation());
+        weight.setText("Weight: " + dog.getWeight());
         profileDescription.setText(dog.getDescription());
     }
 }
